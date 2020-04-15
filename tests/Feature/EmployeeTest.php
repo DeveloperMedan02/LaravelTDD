@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Employee;
 use App\Children;
+use App\Employee;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -27,7 +27,7 @@ class EmployeeTest extends TestCase
     }
 
     /** @test */
-    public function should_error_when_name_not_provided()
+    public function should_error_when_full_name_not_provided()
     {
         $bodyPost = $this->bodyPost();
         unset($bodyPost['name']);
@@ -116,6 +116,7 @@ class EmployeeTest extends TestCase
     /** @test */
     public function should_have_instance_of_children()
     {
+        $this->withoutExceptionHandling();
         $responsePostEmployee = $this->post('/api/employee/add', $this->bodyPost());
 
         $responsePostEmployee->assertOk();

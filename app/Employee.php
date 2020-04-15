@@ -2,7 +2,9 @@
 
 namespace App;
 
+
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Resources\Employee as EmployeeResource;
 
 class Employee extends Model
 {
